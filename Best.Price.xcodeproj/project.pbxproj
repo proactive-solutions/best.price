@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1710C2202ABE0AE8008A551B /* Best_PriceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1710C21F2ABE0AE8008A551B /* Best_PriceApp.swift */; };
-		1710C2222ABE0AE8008A551B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1710C2212ABE0AE8008A551B /* ContentView.swift */; };
+		1710C2222ABE0AE8008A551B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1710C2212ABE0AE8008A551B /* LoginView.swift */; };
 		1710C2242ABE0AEA008A551B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1710C2232ABE0AEA008A551B /* Assets.xcassets */; };
 		1710C2272ABE0AEA008A551B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1710C2262ABE0AEA008A551B /* Preview Assets.xcassets */; };
 		1710C2312ABE0AEA008A551B /* Best_PriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1710C2302ABE0AEA008A551B /* Best_PriceTests.swift */; };
@@ -64,7 +64,7 @@
 /* Begin PBXFileReference section */
 		1710C21C2ABE0AE8008A551B /* Best.Price.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Best.Price.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1710C21F2ABE0AE8008A551B /* Best_PriceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Best_PriceApp.swift; sourceTree = "<group>"; };
-		1710C2212ABE0AE8008A551B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1710C2212ABE0AE8008A551B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1710C2232ABE0AEA008A551B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1710C2262ABE0AEA008A551B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1710C22C2ABE0AEA008A551B /* Best.PriceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Best.PriceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,7 +152,7 @@
 			children = (
 				1710C2492ABE0AFC008A551B /* GoogleService-Info.plist */,
 				1710C21F2ABE0AE8008A551B /* Best_PriceApp.swift */,
-				1710C2212ABE0AE8008A551B /* ContentView.swift */,
+				1710C2212ABE0AE8008A551B /* LoginView.swift */,
 				1710C2232ABE0AEA008A551B /* Assets.xcassets */,
 				1710C2252ABE0AEA008A551B /* Preview Content */,
 			);
@@ -347,7 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1710C2222ABE0AE8008A551B /* ContentView.swift in Sources */,
+				1710C2222ABE0AE8008A551B /* LoginView.swift in Sources */,
 				1710C2202ABE0AE8008A551B /* Best_PriceApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
