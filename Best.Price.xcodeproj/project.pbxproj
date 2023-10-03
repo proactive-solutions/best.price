@@ -42,6 +42,7 @@
 		1710C27D2ABE0C43008A551B /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1710C27C2ABE0C43008A551B /* FirebaseRemoteConfigSwift */; };
 		1710C27F2ABE0C43008A551B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1710C27E2ABE0C43008A551B /* FirebaseStorage */; };
 		1710C2812ABE0C43008A551B /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1710C2802ABE0C43008A551B /* FirebaseStorageCombine-Community */; };
+		179C42C12ACB312000DFD2F5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179C42C02ACB312000DFD2F5 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		1710C23A2ABE0AEA008A551B /* Best_PriceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Best_PriceUITests.swift; sourceTree = "<group>"; };
 		1710C23C2ABE0AEA008A551B /* Best_PriceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Best_PriceUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1710C2492ABE0AFC008A551B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		179C42C02ACB312000DFD2F5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,9 +152,9 @@
 		1710C21E2ABE0AE8008A551B /* Best.Price */ = {
 			isa = PBXGroup;
 			children = (
+				179C42BF2ACB310600DFD2F5 /* Login */,
 				1710C2492ABE0AFC008A551B /* GoogleService-Info.plist */,
 				1710C21F2ABE0AE8008A551B /* Best_PriceApp.swift */,
-				1710C2212ABE0AE8008A551B /* LoginView.swift */,
 				1710C2232ABE0AEA008A551B /* Assets.xcassets */,
 				1710C2252ABE0AEA008A551B /* Preview Content */,
 			);
@@ -182,6 +184,15 @@
 				1710C23C2ABE0AEA008A551B /* Best_PriceUITestsLaunchTests.swift */,
 			);
 			path = Best.PriceUITests;
+			sourceTree = "<group>";
+		};
+		179C42BF2ACB310600DFD2F5 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1710C2212ABE0AE8008A551B /* LoginView.swift */,
+				179C42C02ACB312000DFD2F5 /* LoginViewModel.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +360,7 @@
 			files = (
 				1710C2222ABE0AE8008A551B /* LoginView.swift in Sources */,
 				1710C2202ABE0AE8008A551B /* Best_PriceApp.swift in Sources */,
+				179C42C12ACB312000DFD2F5 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
