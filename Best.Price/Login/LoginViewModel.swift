@@ -6,23 +6,18 @@
 //
 
 import Foundation
+import FirebaseAuth
+
 final class LoginViewModel {
-    enum LoginMethod {
-        case gmail
-        case apple
+    enum AuthenticationProvider {
         case credentials(email: String, password: String)
     }
     
-    func login(with method: LoginMethod) async throws {
-        switch method {
-        case .apple:
-            break
-
-        case .gmail:
-            break
-
-        case .credentials:
-            break
+    func authenticWith(provider: AuthenticationProvider) async throws -> AuthDataResult {
+        switch provider {
+        case let .credentials(email, password):
+            return try await Auth.auth().createUser(withEmail: email, password: password)
         }
     }
 }
+

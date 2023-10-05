@@ -6,58 +6,114 @@
 //
 
 import SwiftUI
+
 struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
+    
+    private let loginViewModel = LoginViewModel()
 
     var body: some View {
-
         Form {
-            HStack {
-                Spacer()
-                Image(systemName: "person.crop.circle.fill")
-                    .resizable()
-                    .frame(width: 150, height: 150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .foregroundColor(.blue)
-                Spacer()
-            }
-            HStack{
-                Image(systemName:"envelope")
-                // play with the frame and padding here
-                TextField("Email Address", text: $email)
-            }
-            HStack{
-                Image(systemName:"lock")
-                SecureField("Password", text: $password)
-            }
+            avatarView()
+            emailInputField()
+            passwordInputField()
             VStack {
                 Spacer(minLength: 20)
                 HStack(alignment: .center) {
-                    Button(action: {
-                        // TODO: Implement login logic
-                    }) {
-                        Text("Remember me")
-                    }
+                    rememberMeButton()
                     Spacer()
-                    Button(action: {
-                        // TODO: Implement login logic
-                    }) {
-                        Text("Forgot Password?")
-                    }
+                    forgotPasswordButton()
                 }
                 Spacer(minLength: 20)
-                Button(action: {
-                    // TODO: Implement login logic
-                }) {
-                    Text("Login")
-                        .frame(width: 150)
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(Color.blue)
-                        .cornerRadius(10)
+                HStack {
+                    loginButton()
+                    Spacer()
+                    signUpButton()
                 }
                 Spacer(minLength: 20)
             }
+        }
+    }
+}
+
+// private extension for components
+private extension LoginView {
+    func avatarView() -> some View {
+        HStack {
+            Spacer()
+            Image(systemName: "person.crop.circle.fill")
+                .resizable()
+                .frame(width: 150, height: 150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .foregroundColor(.blue)
+            Spacer()
+        }
+    }
+
+    func emailInputField() -> some View {
+        HStack {
+            Image(systemName:"envelope")
+            TextField("Email Address", text: $email)
+        }
+    }
+    
+    func passwordInputField() -> some View {
+        HStack {
+            Image(systemName:"lock")
+            SecureField("Password", text: $password)
+        }
+    }
+    
+    func loginButton() -> some View {
+        Button(action: {
+            // TODO: Implement login logic
+        }) {
+            Text("Login")
+                .padding([.bottom, .top], 10)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .foregroundColor(.white)
+                .background(Color.blue)
+                .cornerRadius(10)
+        }
+    }
+    
+    func signUpButton() -> some View {
+        Button(action: {
+            Task {
+                do {
+                    let result = try await self.loginViewModel.authenticWith(
+                        provider: .credentials(
+                            email: email, password: password
+                        )
+                    )
+                    print("Result = ", result, "description = ", result.description)
+                } catch let accountCreationError {
+                    print("Firebase Error = ", accountCreationError)
+                }
+            }
+        }) {
+            Text("Create Account")
+                .padding([.bottom, .top], 10)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .foregroundColor(.white)
+                .background(Color.blue)
+                .cornerRadius(10)
+        }
+    }
+    
+    func rememberMeButton() -> some View {
+        Button(action: {
+            // TODO: Implement login logic
+        }) {
+            Text("Remember me")
+        }
+    }
+    
+    func forgotPasswordButton() -> some View {
+        Button(action: {
+            // TODO: Implement login logic
+        }) {
+            Text("Forgot Password?")
         }
     }
 }
