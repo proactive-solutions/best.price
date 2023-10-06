@@ -68,9 +68,13 @@ private extension LoginView {
         Button(action: {
             Task {
                 do {
-                    let autProvider: LoginViewModel.AuthenticationProvider = .credentials(email: email, password: password)
-                    let result = try await loginViewModel.signInUser(WithAuthProvider: autProvider)
-                    print("Result = ", result, "description = ", result.description)
+                    let result = try await loginViewModel.signInUser(
+                        WithAuthProvider: .credentials(
+                            email: email,
+                            password: password
+                        )
+                    )
+                    print("Result = ", result, "description = ", result.credential, result.user)
                 } catch let userSignInError {
                     print("Firebase Error = ", userSignInError)
                 }
@@ -85,8 +89,12 @@ private extension LoginView {
         Button(action: {
             Task {
                 do {
-                    let autProvider: LoginViewModel.AuthenticationProvider = .credentials(email: email, password: password)
-                    let result = try await loginViewModel.createUser(withAuthProvider: autProvider)
+                    let result = try await loginViewModel.createUser(
+                        withAuthProvider: .credentials(
+                            email: email,
+                            password: password
+                        )
+                    )
                     print("Result = ", result, "description = ", result.description)
                 } catch let accountCreationError {
                     print("Firebase Error = ", accountCreationError)
