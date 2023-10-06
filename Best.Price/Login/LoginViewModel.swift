@@ -12,12 +12,18 @@ final class LoginViewModel {
     enum AuthenticationProvider {
         case credentials(email: String, password: String)
     }
-    
-    func authenticWith(provider: AuthenticationProvider) async throws -> AuthDataResult {
+
+    func createUser(withAuthProvider provider: AuthenticationProvider) async throws -> AuthDataResult {
         switch provider {
         case let .credentials(email, password):
             return try await Auth.auth().createUser(withEmail: email, password: password)
         }
     }
-}
 
+    func signInUser(WithAuthProvider provider: AuthenticationProvider) async throws -> AuthDataResult {
+        switch provider {
+        case let .credentials(email, password):
+            return try await Auth.auth().signIn(withEmail: email, password: password)
+        }
+    }
+}
