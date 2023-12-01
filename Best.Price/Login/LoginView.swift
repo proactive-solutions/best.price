@@ -8,16 +8,13 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var email = ""
-    @State private var password = ""
-
-    private let loginViewModel = LoginViewModel()
+    @ObservedObject var viewModel = LoginViewModel()
 
     var body: some View {
         Form {
-            avatarView()
-            emailInputField()
-            passwordInputField()
+            ViewFactory.avatarView()
+            ViewFactory.emailInputField($viewModel.email)
+            ViewFactory.passwordInputField($viewModel.password)
             VStack {
                 Spacer(minLength: 20)
                 HStack(alignment: .center) {
@@ -39,62 +36,28 @@ struct LoginView: View {
 
 // private extension for components
 private extension LoginView {
-    func avatarView() -> some View {
-        HStack {
-            Spacer()
-            Image(systemName: "person.crop.circle.fill")
-                .resizable()
-                .frame(width: 150, height: 150, alignment: /*@START_MENU_TOKEN@*/ .center/*@END_MENU_TOKEN@*/)
-                .foregroundColor(.blue)
-            Spacer()
-        }
-    }
-
-    func emailInputField() -> some View {
-        HStack {
-            Image(systemName: "envelope")
-            TextField("Email Address", text: $email)
-        }
-    }
-
-    func passwordInputField() -> some View {
-        HStack {
-            Image(systemName: "lock")
-            SecureField("Password", text: $password)
-        }
-    }
-
     func loginButton() -> some View {
         Button(action: {
             Task {
                 do {
-                    let result = try await loginViewModel.signInUser(
-                        WithAuthProvider: .credentials(
-                            email: email,
-                            password: password
-                        )
-                    )
-                    print("Result = ", result, "description = ", result.credential, result.user)
+                    let result = try await viewModel.signInUser(WithAuthProvider: .credentials)
+                    print("Result = ", result, "description = ", result.description, result.user)
                 } catch let userSignInError {
                     print("Firebase Error = ", userSignInError)
                 }
             }
         }) {
             Text("Login")
-                .authDecoration()
+                .authButtonDecoration()
         }
+        .disabled(!viewModel.isCredentialsValid)
     }
 
     func signUpButton() -> some View {
         Button(action: {
             Task {
                 do {
-                    let result = try await loginViewModel.createUser(
-                        withAuthProvider: .credentials(
-                            email: email,
-                            password: password
-                        )
-                    )
+                    let result = try await viewModel.createUser(withAuthProvider: .credentials)
                     print("Result = ", result, "description = ", result.description)
                 } catch let accountCreationError {
                     print("Firebase Error = ", accountCreationError)
@@ -102,8 +65,9 @@ private extension LoginView {
             }
         }) {
             Text("Create Account")
-                .authDecoration()
+                .authButtonDecoration()
         }
+        .disabled(!viewModel.isCredentialsValid)
     }
 
     func rememberMeButton() -> some View {
@@ -124,7 +88,7 @@ private extension LoginView {
 }
 
 private extension View where Self == Text {
-    func authDecoration() -> some View {
+    func authButtonDecoration() -> some View {
         padding([.bottom, .top], 10)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .foregroundColor(.white)
