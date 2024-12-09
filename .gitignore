@@ -92,3 +92,5 @@ Best.Price.xcodeproj/xcuserdata/pawan-sharma.xcuserdatad/
 Best.Price.xcodeproj/project.xcworkspace/xcuserdata/pawan-sharma.xcuserdatad
 Best.Price/GoogleService-Info.plist
 *.DS_Store
+Best.Price.xcodeproj/project.xcworkspace/xcshareddata
+*.xcworkspacedata

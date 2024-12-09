@@ -7,30 +7,63 @@
 
 import XCTest
 @testable import Best_Price
+import Models
 
 final class Best_PriceTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+  override func setUpWithError() throws {
+    // Put setup code here. This method is called before the invocation of each test method in the class.
+  }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+  override func tearDownWithError() throws {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+  }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
+  func testProductCategoryInitialization() {
+    // Arrange
+    let title = "Electronics"
+    let iconURL = "https://example.com/icon.png"
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+    // Act
+    let category = ProductCategory(
+      title: title,
+      iconURL: iconURL
+    )
+    
+    // Assert
+    XCTAssertEqual(
+      category.title,
+      title,
+      "The title should match the input value."
+    )
+    XCTAssertEqual(
+      category.iconURL,
+      iconURL,
+      "The iconURL should match the input value."
+    )
+  }
 
+  func testProductCategoryWithEmptyValues() {
+    // Arrange
+    let title = ""
+    let iconURL = ""
+
+    // Act
+    let category = ProductCategory(
+      title: title,
+      iconURL: iconURL
+    )
+
+    // Assert
+    XCTAssertEqual(
+      category.title,
+      title,
+      "The title should be an empty string."
+    )
+    XCTAssertEqual(
+      category.iconURL,
+      iconURL,
+      "The iconURL should be an empty string."
+    )
+  }
 }
